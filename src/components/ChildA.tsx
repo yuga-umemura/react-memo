@@ -1,9 +1,11 @@
+import * as React from "react";
+
 type PropsA = {
   value: string;
   setValue: (value: string) => void;
 };
 
-const ChildA = (props: PropsA) => {
+const ChildA = React.memo<PropsA>((props: PropsA) => {
   console.log("ChildA");
   return (
     <input
@@ -12,6 +14,6 @@ const ChildA = (props: PropsA) => {
       onChange={(e) => props.setValue(e.target.value)}
     />
   );
-};
+});
 
 export default ChildA;

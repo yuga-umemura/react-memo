@@ -1,9 +1,11 @@
+import * as React from "react";
+
 type PropsB = {
   value: number;
   setValue: (value: number) => void;
 };
 
-const ChildB = (props: PropsB) => {
+const ChildB = React.memo<PropsB>((props: PropsB) => {
   console.log("ChildB");
   return (
     <input
@@ -12,6 +14,6 @@ const ChildB = (props: PropsB) => {
       onChange={(e) => props.setValue(parseInt(e.target.value))}
     />
   );
-};
+});
 
 export default ChildB;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import ChildA from "./ChildA";
 import ChildB from "./ChildB";
 
@@ -13,12 +13,13 @@ const Parent = () => {
     valueB: 0,
   });
 
-  const setValueA = (value: string) => {
-    setValues({ ...values, valueA: value });
-  };
-  const setValueB = (value: number) => {
-    setValues({ ...values, valueB: value });
-  };
+  const setValueA = useCallback((value: string) => {
+    setValues((prevValues) => ({ ...prevValues, valueA: value }));
+  }, []);
+
+  const setValueB = useCallback((value: number) => {
+    setValues((prevValues) => ({ ...prevValues, valueB: value }));
+  }, []);
 
   return (
     <div>
